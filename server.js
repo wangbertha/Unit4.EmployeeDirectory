@@ -21,9 +21,9 @@ app.get('/employees/random', (req, res) => {
 app.get('/employees/:id', (req, res) => {
     const { id } = req.params;
 
-    const employee = employees.filter((employee) => employee.id === +id);
+    const employee = employees.find((employee) => employee.id === +id);
 
-    if (employee.length) {
+    if (employee) {
         res.json(employee);
     }
     else {
