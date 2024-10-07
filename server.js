@@ -13,6 +13,19 @@ app.get('/employees', (req, res) => {
     res.json(employees);
 })
 
+app.get('/employees/:id', (req, res) => {
+    const { id } = req.params;
+
+    const employee = employees.filter((employee) => employee.id === +id);
+
+    if (employee.length) {
+        res.json(employee);
+    }
+    else {
+        res.status(404).send('There are no employees with that id.')
+    }
+})
+
 app.listen(PORT, () => {
     console.log(`Listening on port #${PORT}`);
 });
